@@ -23,6 +23,8 @@ const CandyMachine = ({ walletAddress }) => {
 
   const [ candyMachine, setCandyMachine ] = useState(null);
 
+  const [ machineStats, setMachineStats ] = useState(null)
+
   const getCandyMachineCreator = async (candyMachine) => {
     const candyMachineID = new PublicKey(candyMachine);
     return await web3.PublicKey.findProgramAddress(
@@ -121,7 +123,6 @@ const getCandyMachineState = async () => {
     itemsRemaining,
     goLiveData,
     goLiveDateTimeString,
-    presale,
   });
 };
 
@@ -399,7 +400,7 @@ const getCandyMachineState = async () => {
       <div className="machine-container">
         <p>{`Drop Date: ${candyMachine.state.goLiveDateTimeString}`}</p>
         <p>{`Items Minted: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
-        <button className="cta-button mint-button" onClick={null}>
+        <button className="cta-button mint-button" onClick={mintToken}>
             Mint NFT
         </button>
       </div>
